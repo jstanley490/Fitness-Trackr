@@ -36,8 +36,6 @@ async function getRoutineById(id) {
       [id]
     );
 
-    await attachActivitiesToRoutines(routine);
-
     return routine;
   } catch (error) {
     throw error;
@@ -67,6 +65,8 @@ async function getAllRoutines() {
       `
     );
 
+    await attachActivitiesToRoutines(routines);
+
     return routines;
   } catch (error) {
     throw error;
@@ -84,6 +84,8 @@ async function getAllPublicRoutines() {
       WHERE "isPublic" = true
       `
     );
+
+    await attachActivitiesToRoutines(routine);
 
     return routine;
   } catch (error) {
@@ -104,6 +106,8 @@ async function getAllRoutinesByUser({ username }) {
       [username]
     );
 
+    await attachActivitiesToRoutines(routine);
+
     return routine;
   } catch (error) {
     throw error;
@@ -122,6 +126,8 @@ async function getPublicRoutinesByUser({ username }) {
     `,
       [username]
     );
+
+    await attachActivitiesToRoutines(routine);
 
     return routine;
   } catch (error) {
@@ -143,6 +149,8 @@ async function getPublicRoutinesByActivity({ id }) {
   `,
       [id]
     );
+
+    await attachActivitiesToRoutines(routine);
 
     return routine;
   } catch (error) {

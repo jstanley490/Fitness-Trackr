@@ -71,11 +71,11 @@ async function updateRoutineActivity({ id, ...fields }) {
       rows: [routine_activity],
     } = await client.query(
       `
-    UPDATE routine_activities
-    SET ${setString}
-    WHERE id = ${id}
-    RETURNING *;
-    `,
+      UPDATE routine_activities
+      SET ${setString}
+      WHERE id = ${id}
+      RETURNING *;
+      `,
       Object.values(fields)
     );
 

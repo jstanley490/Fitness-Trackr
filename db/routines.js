@@ -158,7 +158,7 @@ async function getPublicRoutinesByActivity({ id }) {
   }
 }
 
-async function updateRoutine({ id, ...fields }) {
+async function updateRoutine({ routineId, ...fields }) {
   try {
     const setString = Object.keys(fields)
       .map((key, index) => `"${key}"=$${index + 1}`)
@@ -170,7 +170,7 @@ async function updateRoutine({ id, ...fields }) {
       `
     UPDATE routines
     SET ${setString}
-    WHERE id = ${id}
+    WHERE id = ${routineId}
     RETURNING *;
     `,
       Object.values(fields)
